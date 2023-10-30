@@ -1,4 +1,6 @@
+require("dotenv").config();
 const express=require("express");
+const mongoose= require("mongoose");
 var bodyParser=require("body-parser");
 //database
 const database=require("./database");
@@ -7,6 +9,16 @@ const booky=express();
 
 booky.use(bodyParser.urlencoded({extended:true}));
 booky.use(bodyParser.json());
+mongoose.connect("mongodb+srv://yashika:<yash>@cluster0.e0dltm3.mongodb.net/booky?retryWrites=true&w=majority",
+{
+    useNewUrlParser:true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+
+
+}
+).then(() =>console.log("connection eastablished"));
 /*
 Route                    /
 description              get all books
